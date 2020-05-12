@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>jQury designBook</title>
+</head>
+<body>
+  <!-- <ul>
+    <li><a href="index.html">セレクター</a></li>
+    <li><a href="order.html">メソッド</a></li>
+    <li><a href="event.html">イベント</a></li>
+    <li><a href="animation.html">アニメーション</a></li>
+    <li><a href="form.html">フォーム</a></li>
+  </ul> -->
+  <h1>セレクター</h1>
+  <h2>CSSセレクター</h2>
+  
+    <dl>
+      <dt>要素セレクター</dt>
+      <dd>$('h1やpなどの要素')</dd>
+      <dt>idセレクター、クラスセレクター</dt>
+      <dd>$('.や#で指定')</dd>
+      <div class="kihon">
+        <h3>以下基本的に</h3>
+        <ul>
+          <li id="first">list id="first" &emsp; テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">list id="second"テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">list id="third" &emsp;テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">list id="fourth"  &ensp;テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+        <h3>とする</h3>
+      </div>
+      <dt>子孫セレクター</dt>
+      <dd>$('#first strong').css('color','red');</dd>
+      <dd>スペースを開けて指定して特定の要素の内側のあるものを絞り込める</dd>
+      <dd>
+        <ul class="sison">
+          <li id="first"><strong>テキスト</strong>テキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+      <dt>グループセレクター</dt>
+      <dd>$('#first , #third').css('color','red');</dd>
+      <dd>,(カンマ)で区切る事で複数のセレクターを指定して操作</dd>
+      <dd>
+        <ul class="group">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>子セレクター</dt>
+      <dd>$('li > strong').css('color','red');</dd>
+      <dd>指定する事でliの直下のstrongがついたもののみが変化する。<br>
+         三列目のliはdivで囲われているためliの直下ではない</dd>
+      <dd>
+        <ul class="children">
+          <li id="first"><strong>テキスト</strong>テキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third"><div><strong>テキスト</strong>テキストテキストテキストテキストテキストテキストテキストテキスト</div></li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>隣接セレクター</dt>
+      <dd>$('#second + li').css('color','red');</dd>
+      <dd>特定の要素の次の要素を選択する</dd>
+      <dd>
+        <ul class="next">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>first-child擬似クラス</dt>
+      <dd>$('li:first-child').css('color','red')</dd>
+      <dd>$('li:last-child').css('color','green')</dd>
+      <dd>最初に登場する要素を指定。親要素が複数ある場合も適応可能<br>
+      またlast-childだと最後の要素を選択できる </dd>
+      <dd>
+        <ul class="first-child">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+        <ul class="first-child">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>間接セレクター</dt>
+      <dd>$('#second~li').css('color','red');</dd>
+      <dd>特定のセレクターと要素を〜で結んで特定したセレクターの後の要素以降を指定する</dd>
+      <dd>
+        <ul class="kansetu">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>否定擬似クラス</dt>
+      <dd>$('li:not(:first-child)').css('color','red');</dd>
+      <dd>セレクターの後ろに:notをつけて(…)に除外する条件を記述する</dd>
+      <dd>
+        <ul class="hitei">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>nth-child擬似クラス</dt>
+      <dd>$('li:nth-child(n)').css('color','red');</dd>
+      <dd>要素のn番目を選択。nに偶数ならeven,奇数ならoddを入れ、(2n)などとすると2の倍数を選択できる <br>
+      (例としてここではnに3を入れた)</dd>
+      <dd>
+        <ul class="nth">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>nth-last-child擬似クラス</dt>
+      <dd>$('li:nth-last-child(n)').css('color','red');</dd>
+      <dd>要素の後ろから数えてn番目を選択
+      (例としてここではnに3を入れた)</dd>
+      <dd>
+        <ul class="nth-last-child">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>nth-of-type擬似クラス</dt>
+      <dd>$('li:nth-of-type(n)').css('color','red');</dd>
+      <dd>要素のn番目を数えるのはnth-child擬似クラスと同じだが異なるのはnth-child擬似クラスが全ての兄弟要素を数えるのに対し、こちらは子要素のみを数える。ここでは例としてnを(2)としたので２番目のdt要素ということになる<br>
+        こちらもnに偶数ならeven,奇数ならoddを入れ、(2n)などとすると2の倍数を選択できる</dd>
+        <dd>またfirst-of-type(<span class="gr">グリーン</span>のもの),last-of-type(<span class="bl">水色</span>のもの)もありこちらも最初(または最後)の子要素を数える</dd>
+        <div>
+          <dl class="nth-of-type">
+            <dt>1.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dt>
+            <dd>2.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+            <dt>3.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dt>
+            <dd>4.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+            <dt>5.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dt>
+            <dd>6.テキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+          </dl>
+        </div>
+      </dl>
+    <h1>属性セレクター</h1>
+    <p>属性セレクターは基本的に[ ]で囲う</p>
+
+    <dl>
+      <dt>$('[id]').css('color','red');</dt>
+      <dd>[ ]内の属性を選択できる。この場合だとid属性を持つものを取得する</dd>
+      <dd>
+        <ul class="this">
+          <li class="first">class="first" テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">id="second" テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li class="third">class="third" テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">id="fourth" テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>$('li[id=second]').css('color','red');</dt>
+      <dd>属性が同じもの。この場合だとidがsecondの要素を取得する
+        <ul class="same">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>$('li[id!="second"]').css('color','red');</dt>
+      <dd>属性が異なるもの。この場合だとidがsecond以外の要素を取得する</dd>
+      <dd>
+        <ul class="difer">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>$('li[id^="f"]').css('color','red');</dt>
+      <dd>特定の属性の値が特定の文字列で始まるもの。この場合だとidが「f」から始まる要素を取得する</dd>
+      <dd>この例だと「first」と「fourth」が「f」の文字列で始まっている</dd>
+      <dd>
+        <ul class="start">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>$('li[id$="d"]').css('color','red');</dt>
+      <dd>特定の属性の値が特定の文字列で終わるもの。この場合だとidが「d」で終わる要素を取得する</dd>
+      <dd>この例だと「second」と「third」が「d」の文字列で終わっている</dd>
+      <dd>
+        <ul class="end">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+
+      <dt>$('li[id*="ir"]').css('color','red');</dt>
+      <dd>特定の属性の値が特定の文字列を含むもの。この場合だとidが「ir」を含む要素を取得する</dd>
+      <dd>この例だと「first」と「third」に「ir」の文字列が含まれている</dd>
+      <dd>
+        <ul class="cont">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+      <dt>$('li[id*="ir"]li[id$="t"]').css('color','red');</dt>
+      <dd>複数の属性セレクターを同時に指定できる。</dd>
+      <dd>この場合だとidが「ir」を含み「t」で終わる要素を取得する</dd>
+      <dd>
+        <ul class="douzi">
+          <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+        </ul>
+      </dd>
+    </dl> 
+    <div class="zokusei">
+      <h3>まとめ</h3>
+        <ul>
+          <li> = 〜と等しい</li>
+          <li>!= 〜と等しくない</li>
+          <li>*=〜を含む</li>
+          <li>^=〜から始まる</li>
+          <li>$=〜で終わる</li>
+          <li>※複数指定する場合はスペースは空けない</li>
+        </ul>
+    </div>
+
+      <h1>jQueryの独自セレクター</h1>
+      <dl>
+        <dt>firstセレクター/lastセレクター</dt>
+          <dd>$('li:first').css('color','red');</dd>
+          <dd>$('li:last').css('color','green');</dd>
+        <dd>セレクターの中の最初の要素をfirstセレクター、最後の要素をlastセレクターで指定できる</dd>
+        <dd>
+          <ul class="first-last">
+            <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          </ul>
+        </dd>
+        <dd>※first(last)セレクターはその要素内の最初(最後)だけが範囲で、first-child(last-child)は同じ親要素を持つ要素にも範囲が及ぶ</dd>
+        <div class="attention">
+          参考 first-child ( last-child )
+          <dd>
+            <ul class="first-child">
+              <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            </ul>
+            <ul class="first-child">
+              <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+              <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            </ul>
+          </dd>  
+        </div>
+
+         <dt>evenセレクター/oddセレクター</dt>
+          <dd>$('li:even').css('color','green');</dd>
+          <dd>$('li:odd').css('color','red');</dd>
+        <dd>セレクターの中の偶数の要素をevenセレクター、奇数の要素をoddセレクターで指定できる</dd>
+        <dd>※JavaScriptでは数字を0から始まることに注意</dd>
+
+        <dd>
+          <ul class="even-odd">
+            <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          </ul>
+        </dd>
+
+        <dt>eqセレクター/ltセレクター/gtセレクター</dt>
+          <dd>$('li:lt(2)').css('color','yellow');</dd>
+          <dd>$('li:eq(2)').css('color','skyblue');</dd>
+          <dd>$('li:gt(2)').css('color','green');</dd>
+        <dd>セレクターの中から特定の順番の要素をeq ( equal )セレクター、特定の要素より前の要素をlt ( less than )セレクター、後ろの要素をgt ( greater than )セレクターで選択できる</dd>
+        <dd>
+          <ul class="eq">
+            <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="second">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="fourth">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+          </ul>
+        </dd>
+
+        <dt>containsセレクター/hasセレクター</dt>
+          <dd>$('li:contains("サンプル")').css('color','red');</dd>
+          <dd>$('li:has("strong")').css('color','skyblue');</dd>
+        <dd>containsセレクターは( )の中にある特定の文字列が含まれる要素を取得し、hasセレクターは( )の中にある特定の要素を取得する</dd>
+        <dd>
+          <ul class="contains">
+            <li id="first">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="second">テキストテキストテキスト<strong>テキスト</strong>テキストテキストテキストテキストテキスト</li>
+            <li id="third">テキストテキストテキストテキストテキストテキストテキストテキストテキスト</li>
+            <li id="fourth">サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル</li>
+          </ul>
+        </dd>
+      </dl>
+</body>
+</html>
